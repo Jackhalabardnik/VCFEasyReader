@@ -4,7 +4,7 @@
 #include <gtkmm.h>
 #include <iostream>
 
-class MainWindow : public Gtk::Window
+class MainWindow : public Gtk::ApplicationWindow
 {
 
 public:
@@ -19,7 +19,10 @@ private:
 	void setOutputBox();
 	void setMainGrid();
 	void setWindow();
+	
 	void openNewFile();
+	void exportToTextFile();
+	void printFile();
 	void changeView(int mode);
 protected:
 	Gtk::Label pathLabel;
@@ -27,7 +30,7 @@ protected:
 	Gtk::TextView textView;
 	Gtk::Box outputBox, mainBox;
 	Gtk::Grid outputGrid;
-	Glib::RefPtr<Gio::SimpleActionGroup> menubarActionGroup, viewAG;
+	Glib::RefPtr<Gio::SimpleAction> viewToggle;
 };
 
 #endif

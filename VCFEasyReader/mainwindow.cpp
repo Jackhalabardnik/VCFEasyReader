@@ -59,16 +59,12 @@ void MainWindow::setLabels()
 }
 
 void MainWindow::setMenus()
-{
-	menubarActionGroup = Gio::SimpleActionGroup::create();
-	menubarActionGroup->add_action("opennew", sigc::mem_fun(*this, &MainWindow::openNewFile));
-	menubarActionGroup->add_action("print");
-	menubarActionGroup->add_action("export");
-	viewAG = Gio::SimpleActionGroup::create();
-	viewAG->add_action_radio_integer("minimal", sigc::mem_fun(*this, &MainWindow::changeView), 1);
-	viewAG->add_action_radio_integer("list", sigc::mem_fun(*this, &MainWindow::changeView), 2);
-	insert_action_group("menu", menubarActionGroup);
-	insert_action_group("view", viewAG);
+{ 
+	add_action("opennew", sigc::mem_fun(*this, &MainWindow::openNewFile));
+	add_action("print", sigc::mem_fun(*this, &MainWindow::printFile));
+	add_action("export", sigc::mem_fun(*this, &MainWindow::exportToTextFile));
+	viewToggle = Gio::SimpleAction::create("view");
+	viewToggle = add_action_radio_integer("changeview", sigc::mem_fun(*this, &MainWindow::changeView), 1);
 	
 	Glib::RefPtr<Gtk::Builder> refBuilder = Gtk::Builder::create();
 	
@@ -80,37 +76,41 @@ void MainWindow::setMenus()
   "      <section>"
   "        <item>"
   "          <attribute name='label' translatable='yes'>Open</attribute>"
-  "          <attribute name='action'>menu.opennew</attribute>"
+  "          <attribute name='action'>win.opennew</attribute>"
   "          <attribute name='accel'>&lt;Primary&gt;o</attribute>"
   "        </item>"
   "      </section>"
   "      <section>"
   "        <item>"
   "          <attribute name='label' translatable='yes'>Print</attribute>"
-  "          <attribute name='action'>menu.print</attribute>"
+  "          <attribute name='action'>win.print</attribute>"
   "          <attribute name='accel'>&lt;Primary&gt;p</attribute>"
   "        </item>"
   "      </section>"
   "      <section>"
   "        <item>"
   "          <attribute name='label' translatable='yes'>Export</attribute>"
-  "          <attribute name='action'>menu.export</attribute>"
+  "          <attribute name='action'>win.export</attribute>"
   "          <attribute name='accel'>&lt;Primary&gt;i</attribute>"
   "        </item>"
   "      </section>"
   "    </submenu>"
   "    <submenu>"
   "      <attribute name='label' translatable='yes'>View</attribute>"
+  "      <section>"
   "      <item>"
   "        <attribute name='label' translatable='yes'>Minimal</attribute>"
-  "        <attribute name='action'>view.minimal</attribute>"
-  "          <attribute name='target'>1</attribute>"
+  "        <attribute name='action'>win.changeview</attribute>"
+  "        <attribute name='target'>1</attribute>"
   "      </item>"
+  "      </section>"
+  "      <section>"
   "      <item>"
   "        <attribute name='label' translatable='yes'>List</attribute>"
-  "        <attribute name='action'>view.list</attribute>"
-  "          <attribute name='target'>2</attribute>"
+  "        <attribute name='action'>win.changeview</attribute>"
+  "        <attribute name='target'>2</attribute>"
   "      </item>"
+  "      </section>"
   "    </submenu>"
   "  </menu>"
   "</interface>";
@@ -127,11 +127,21 @@ void MainWindow::setMenus()
 
 void MainWindow::openNewFile()
 {
-	std::cout << "Works\n";
+	std::cout << "Open new file\n";
 }
 
 void MainWindow::changeView(int mode)
 {
-	std::string mess = mode == 1 ? "minimal" : "list";
-	std::cout << "Current mode is " << mode << ".\n";
+	std::string message = mode == 1 ? "minimal" : "list";
+	std::cout << "Current mode is " << message << ".\n";
+}
+
+void MainWindow::exportToTextFile()
+{
+	std::cout << "Export to text file\n";
+}
+
+void MainWindow::printFile()
+{
+	std::cout << "Print file\n";
 }
