@@ -3,27 +3,14 @@
 
 MainWindow::MainWindow()
 {
-  setButtons();
   setLabels();
   setMenus();
-  setButtonBox();
   setOutputBox();
   setMainGrid();
   setWindow();
   showAll();
 }
 
-void MainWindow::setButtons()
-{
-	openFile_button.set_label("OpenFile");
-	print_button.set_label("Print");
-	saveToTextFile_button.set_label("saveToTextFile");
-}
-
-void MainWindow::setButtonBox()
-{
-	
-}
 
 void MainWindow::setOutputBox()
 {
@@ -45,7 +32,8 @@ void MainWindow::setMainGrid()
 
 void MainWindow::setWindow()
 {
-	//set_border_width(10);
+	set_title("VCF Easy reader");
+	set_size_request(300,-1);
 }
 void MainWindow::showAll()
 {
@@ -63,7 +51,7 @@ void MainWindow::setMenus()
 	add_action("opennew", sigc::mem_fun(*this, &MainWindow::openNewFile));
 	add_action("print", sigc::mem_fun(*this, &MainWindow::printFile));
 	add_action("export", sigc::mem_fun(*this, &MainWindow::exportToTextFile));
-	viewToggle = Gio::SimpleAction::create("view");
+	
 	viewToggle = add_action_radio_integer("changeview", sigc::mem_fun(*this, &MainWindow::changeView), 1);
 	
 	Glib::RefPtr<Gtk::Builder> refBuilder = Gtk::Builder::create();
@@ -101,14 +89,14 @@ void MainWindow::setMenus()
   "      <item>"
   "        <attribute name='label' translatable='yes'>Minimal</attribute>"
   "        <attribute name='action'>win.changeview</attribute>"
-  "        <attribute name='target'>1</attribute>"
+  "        <attribute name='target' type='i'>1</attribute>"
   "      </item>"
   "      </section>"
   "      <section>"
   "      <item>"
   "        <attribute name='label' translatable='yes'>List</attribute>"
   "        <attribute name='action'>win.changeview</attribute>"
-  "        <attribute name='target'>2</attribute>"
+  "        <attribute name='target' type='i'>2</attribute>"
   "      </item>"
   "      </section>"
   "    </submenu>"
@@ -132,6 +120,7 @@ void MainWindow::openNewFile()
 
 void MainWindow::changeView(int mode)
 {
+	viewToggle->change_state(mode);
 	std::string message = mode == 1 ? "minimal" : "list";
 	std::cout << "Current mode is " << message << ".\n";
 }

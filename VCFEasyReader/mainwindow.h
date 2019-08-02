@@ -15,7 +15,6 @@ private:
 	void setButtons();
 	void setLabels();
 	void setMenus();
-	void setButtonBox();
 	void setOutputBox();
 	void setMainGrid();
 	void setWindow();
@@ -26,11 +25,10 @@ private:
 	void changeView(int mode);
 protected:
 	Gtk::Label pathLabel;
-	Gtk::Button openFile_button, print_button, saveToTextFile_button;
 	Gtk::TextView textView;
 	Gtk::Box outputBox, mainBox;
 	Gtk::Grid outputGrid;
-	Glib::RefPtr<Gio::SimpleAction> viewToggle;
+	Glib::RefPtr<Gio::Action> viewToggle;
 };
 
 #endif
