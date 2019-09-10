@@ -14,12 +14,18 @@ MainWindow::MainWindow()
 
 void MainWindow::setOutputBox()
 {
-	auto scrolledWindow = Gtk::manage(new Gtk::ScrolledWindow);
-	scrolledWindow->set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
-	scrolledWindow->add(textView);
-	scrolledWindow->set_size_request(-1,200);
 	outputBox.set_orientation(Gtk::ORIENTATION_VERTICAL);
-	outputBox.pack_start(*scrolledWindow, Gtk::PACK_EXPAND_WIDGET);
+	scrolledWindow.set_policy(Gtk::POLICY_AUTOMATIC, Gtk::POLICY_AUTOMATIC);
+	treeModel = Gtk::ListStore::create(columns);
+	treeView.set_model(treeModel);
+	
+	treeView.append_column_editable("Check", columns.doCheck);
+	treeView.append_column("Name", columns.contactName);
+	treeView.append_column("Call number", columns.contactNumber);
+	treeView.append_column("Additional info", columns.contactInfo);
+	
+	scrolledWindow.add(treeView);
+	outputBox.pack_start(scrolledWindow, Gtk::PACK_EXPAND_WIDGET);
 	outputBox.pack_start(pathLabel, Gtk::PACK_SHRINK);
 	mainBox.pack_start(outputBox, Gtk::PACK_EXPAND_WIDGET);
 }
@@ -51,8 +57,8 @@ void MainWindow::setMenus()
 	add_action("opennew", sigc::mem_fun(*this, &MainWindow::openNewFile));
 	add_action("print", sigc::mem_fun(*this, &MainWindow::printFile));
 	add_action("export", sigc::mem_fun(*this, &MainWindow::exportToTextFile));
-	
-	viewToggle = add_action_radio_integer("changeview", sigc::mem_fun(*this, &MainWindow::changeView), 1);
+	add_action("checkAll", sigc::mem_fun(*this, &MainWindow::checkAll));
+	add_action("uncheckAll", sigc::mem_fun(*this, &MainWindow::uncheckAll));
 	
 	Glib::RefPtr<Gtk::Builder> refBuilder = Gtk::Builder::create();
 	
@@ -84,20 +90,18 @@ void MainWindow::setMenus()
   "      </section>"
   "    </submenu>"
   "    <submenu>"
-  "      <attribute name='label' translatable='yes'>View</attribute>"
+  "      <attribute name='label' translatable='yes'>Edit</attribute>"
   "      <section>"
-  "      <item>"
-  "        <attribute name='label' translatable='yes'>Minimal</attribute>"
-  "        <attribute name='action'>win.changeview</attribute>"
-  "        <attribute name='target' type='i'>1</attribute>"
-  "      </item>"
+  "        <item>"
+  "          <attribute name='label' translatable='yes'>Check all</attribute>"
+  "          <attribute name='action'>win.checkAll</attribute>"
+  "        </item>"
   "      </section>"
   "      <section>"
-  "      <item>"
-  "        <attribute name='label' translatable='yes'>List</attribute>"
-  "        <attribute name='action'>win.changeview</attribute>"
-  "        <attribute name='target' type='i'>2</attribute>"
-  "      </item>"
+  "        <item>"
+  "          <attribute name='label' translatable='yes'>Uncheck all</attribute>"
+  "          <attribute name='action'>win.uncheckAll</attribute>"
+  "        </item>"
   "      </section>"
   "    </submenu>"
   "  </menu>"
@@ -116,13 +120,12 @@ void MainWindow::setMenus()
 void MainWindow::openNewFile()
 {
 	std::cout << "Open new file\n";
-}
-
-void MainWindow::changeView(int mode)
-{
-	viewToggle->change_state(mode);
-	std::string message = mode == 1 ? "minimal" : "list";
-	std::cout << "Current mode is " << message << ".\n";
+	
+	Gtk::TreeModel::Row row = *(treeModel->append());
+	row[columns.doCheck] = true;
+	row[columns.contactName] = "New";
+	row[columns.contactNumber] = "000000000";
+	row[columns.contactInfo] = "Info";
 }
 
 void MainWindow::exportToTextFile()
@@ -133,4 +136,32 @@ void MainWindow::exportToTextFile()
 void MainWindow::printFile()
 {
 	std::cout << "Print file\n";
+	
+	auto rowList = treeModel->children();
+	if(rowList.size()>0)
+	{
+		treeModel->erase(--rowList.end());
+	}
+}
+
+void MainWindow::checkAll()
+{
+	performChangeChecksState(true);
+}
+
+void MainWindow::uncheckAll()
+{
+	performChangeChecksState(false);
+}
+
+void MainWindow::performChangeChecksState(bool state)
+{
+	auto rowList = treeModel->children();
+	if(rowList.size()>0)
+	{
+		for(unsigned int i=0; i< rowList.size(); i++)
+		{
+			rowList[i][columns.doCheck] = state;
+		}
+	}
 }

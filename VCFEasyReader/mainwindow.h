@@ -2,6 +2,7 @@
 #define GTKMM_MAINWINDOW_H
 
 #include <gtkmm.h>
+#include "ModelColumns.h"
 #include <iostream>
 
 class MainWindow : public Gtk::ApplicationWindow
@@ -23,12 +24,17 @@ private:
 	void exportToTextFile();
 	void printFile();
 	void changeView(int mode);
+	void checkAll();
+	void uncheckAll();
+	void performChangeChecksState(bool state);
 protected:
+	ModelColumns columns;
 	Gtk::Label pathLabel;
-	Gtk::TextView textView;
+	Gtk::TreeView treeView;
+	Gtk::ScrolledWindow scrolledWindow;
 	Gtk::Box outputBox, mainBox;
 	Gtk::Grid outputGrid;
-	Glib::RefPtr<Gio::Action> viewToggle;
+	Glib::RefPtr<Gtk::ListStore> treeModel;
 };
 
 #endif

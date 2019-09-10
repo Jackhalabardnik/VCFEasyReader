@@ -8,11 +8,15 @@
   <Description/>
   <Dependencies/>
   <VirtualDirectory Name="include">
+    <File Name="ModelColumns.h"/>
     <File Name="mainwindow.h"/>
+    <File Name="TreeView.h"/>
   </VirtualDirectory>
   <VirtualDirectory Name="src">
     <File Name="mainwindow.cpp"/>
     <File Name="main.cpp"/>
+    <File Name="ModelColumns.cpp"/>
+    <File Name="TreeView.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>
@@ -63,7 +67,7 @@
         <SearchPaths/>
       </Completion>
     </Configuration>
-    <Configuration Name="Release" CompilerType="Cross GCC ( x86_64-linux-gnu )" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
+    <Configuration Name="Release" CompilerType="" DebuggerType="GNU gdb debugger" Type="Executable" BuildCmpWithGlobalSettings="append" BuildLnkWithGlobalSettings="append" BuildResWithGlobalSettings="append">
       <Compiler Options="-O2;-std=c++14;-Wall;$(shell pkg-config --cflags gtkmm-3.0)" C_Options="-O2;-Wall" Assembler="" Required="yes" PreCompiledHeader="" PCHInCommandLine="no" PCHFlags="" PCHFlagsPolicy="0">
         <IncludePath Value="."/>
         <Preprocessor Value="NDEBUG"/>
