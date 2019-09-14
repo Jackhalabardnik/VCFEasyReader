@@ -8,15 +8,13 @@
   <Description/>
   <Dependencies/>
   <VirtualDirectory Name="include">
-    <File Name="ModelColumns.h"/>
-    <File Name="mainwindow.h"/>
     <File Name="TreeView.h"/>
+    <File Name="MainWindow.h"/>
   </VirtualDirectory>
   <VirtualDirectory Name="src">
-    <File Name="mainwindow.cpp"/>
     <File Name="main.cpp"/>
-    <File Name="ModelColumns.cpp"/>
     <File Name="TreeView.cpp"/>
+    <File Name="MainWindow.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>

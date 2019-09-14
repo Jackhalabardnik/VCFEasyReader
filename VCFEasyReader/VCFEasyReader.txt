@@ -1,1 +1,1 @@
-./Release/mainwindow.cpp.o ./Release/main.cpp.o ./Release/ModelColumns.cpp.o
+./Release/main.cpp.o ./Release/TreeView.cpp.o ./Release/MainWindow.cpp.o

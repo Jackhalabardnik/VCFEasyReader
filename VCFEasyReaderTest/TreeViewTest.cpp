@@ -1,7 +1,9 @@
 #include <catch.hpp>
 #include "TreeView.cpp"
 
-TEST_CASE("TreeView Contains Gtk::TreeView with contests", "[TreeView]")
+auto have_to_be_here = Gtk::Application::create();
+
+TEST_CASE("Can add stuff to list", "[TreeView]")
 {
 	TreeView tw;
 	CHECK(true);

@@ -1,4 +1,4 @@
-Release/main.cpp.o: main.cpp mainwindow.h /usr/include/gtkmm-3.0/gtkmm.h \
+Release/main.cpp.o: main.cpp MainWindow.h /usr/include/gtkmm-3.0/gtkmm.h \
  /usr/include/glibmm-2.4/glibmm.h \
  /usr/lib/x86_64-linux-gnu/glibmm-2.4/include/glibmmconfig.h \
  /usr/include/glibmm-2.4/glibmm/thread.h /usr/include/glib-2.0/glib.h \
@@ -1141,9 +1141,9 @@ Release/main.cpp.o: main.cpp mainwindow.h /usr/include/gtkmm-3.0/gtkmm.h \
  /usr/include/gtkmm-3.0/gtkmm/treestore.h \
  /usr/include/gtkmm-3.0/gtkmm/uimanager.h \
  /usr/include/gtkmm-3.0/gtkmm/viewport.h \
- /usr/include/gtkmm-3.0/gtkmm/volumebutton.h
+ /usr/include/gtkmm-3.0/gtkmm/volumebutton.h TreeView.h
 
-mainwindow.h:
+MainWindow.h:
 
 /usr/include/gtkmm-3.0/gtkmm.h:
 
@@ -3528,3 +3528,5 @@ mainwindow.h:
 /usr/include/gtkmm-3.0/gtkmm/viewport.h:
 
 /usr/include/gtkmm-3.0/gtkmm/volumebutton.h:
+
+TreeView.h:
