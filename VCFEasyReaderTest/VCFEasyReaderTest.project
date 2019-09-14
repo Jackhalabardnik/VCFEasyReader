@@ -12,8 +12,8 @@
   </VirtualDirectory>
   <VirtualDirectory Name="src">
     <File Name="CatchMain.cpp"/>
-    <File Name="Test.cpp"/>
     <File Name="MockWindow.cpp"/>
+    <File Name="TreeViewTest.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>

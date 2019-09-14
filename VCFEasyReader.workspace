@@ -3,12 +3,12 @@
   <Project Name="VCFEasyReader" Path="VCFEasyReader/VCFEasyReader.project" Active="Yes"/>
   <Project Name="VCFEasyReaderTest" Path="VCFEasyReaderTest/VCFEasyReaderTest.project" Active="No"/>
   <BuildMatrix>
-    <WorkspaceConfiguration Name="Debug" Selected="yes">
+    <WorkspaceConfiguration Name="Debug" Selected="no">
       <Environment/>
       <Project Name="VCFEasyReader" ConfigName="Debug"/>
       <Project Name="VCFEasyReaderTest" ConfigName="Debug"/>
     </WorkspaceConfiguration>
-    <WorkspaceConfiguration Name="Release" Selected="no">
+    <WorkspaceConfiguration Name="Release" Selected="yes">
       <Environment/>
       <Project Name="VCFEasyReader" ConfigName="Release"/>
       <Project Name="VCFEasyReaderTest" ConfigName="Release"/>
