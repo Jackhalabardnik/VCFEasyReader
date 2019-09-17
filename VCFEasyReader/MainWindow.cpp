@@ -180,15 +180,10 @@ std::string MainWindow::askUserForNewFileName()
 
 void MainWindow::checkAll()
 {
-	performChangeChecksState(true);
+	
 }
 
 void MainWindow::uncheckAll()
-{
-	performChangeChecksState(false);
-}
-
-void MainWindow::performChangeChecksState(bool state)
 {
 	
 }

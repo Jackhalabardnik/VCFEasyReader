@@ -26,7 +26,6 @@ private:
 	void changeView(int mode);
 	void checkAll();
 	void uncheckAll();
-	void performChangeChecksState(bool state);
 	
 	std::string askUserForNewFileName();
 protected:
