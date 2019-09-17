@@ -27,6 +27,8 @@ private:
 	void checkAll();
 	void uncheckAll();
 	void performChangeChecksState(bool state);
+	
+	std::string askUserForNewFileName();
 protected:
 	TreeView treeView;
 

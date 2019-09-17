@@ -104,23 +104,78 @@ void MainWindow::setMenus()
 
 void MainWindow::openNewFile()
 {
-	std::cout << "Open new file\n";
+	Gtk::FileChooserDialog dialog("Please choose a vcf file", Gtk::FILE_CHOOSER_ACTION_OPEN);
+	dialog.set_transient_for(*this);
+
+	dialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
+	dialog.add_button("Open", Gtk::RESPONSE_OK);
+
+	auto filter_text = Gtk::FileFilter::create();
+	filter_text->set_name(".vcf files");
+	filter_text->add_mime_type("text/vcf");
+	dialog.add_filter(filter_text);
 	
-//	Gtk::TreeModel::Row row = *(treeModel->append());
-	//row[columns.doCheck] = true;
-	//row[columns.contactName] = "New";
-	//row[columns.contactNumber] = "000000000";
-	//row[columns.contactInfo] = "Info";
+	int result = dialog.run();
+	
 }
 
 void MainWindow::exportToTextFile()
 {
-	std::cout << "Export to text file\n";
-	//auto rowList = treeModel->children();
-	//if(rowList.size()>0)
-	//{
-	//	treeModel->erase(--rowList.end());
-	//}
+	Gtk::FileChooserDialog dialog("Please choose a text file", Gtk::FILE_CHOOSER_ACTION_OPEN);
+	dialog.set_transient_for(*this);
+
+	dialog.add_button("Cancel", Gtk::RESPONSE_CANCEL);
+	dialog.add_button("Open", Gtk::RESPONSE_OK);
+	dialog.add_button("New File", 1);
+
+	auto filter_text = Gtk::FileFilter::create();
+	filter_text->set_name("Text files");
+	filter_text->add_mime_type("text/plain");
+	dialog.add_filter(filter_text);
+	
+	int result = dialog.run();
+	
+	std::string uri;
+	
+	if(result == Gtk::ResponseType::RESPONSE_OK)
+	{
+		uri = dialog.get_uri();
+		uri.erase(uri.begin(),uri.begin()+7);
+	}
+	else if(result == 1)
+	{
+		uri += dialog.get_current_folder_uri() + "/";
+		if(uri.size()>7)
+		{
+			uri.erase(uri.begin(),uri.begin()+7);
+		}
+		uri += askUserForNewFileName();
+	}
+	else
+	{
+		uri = "No path selected";
+	}
+}
+
+std::string MainWindow::askUserForNewFileName()
+{
+	Gtk::MessageDialog dialog(*this, "Type new file name", false, Gtk::MessageType::MESSAGE_OTHER, Gtk::BUTTONS_OK_CANCEL,false);
+	
+	auto entry = Gtk::manage(new Gtk::Entry);
+	entry->show();
+	
+	dialog.get_content_area()->pack_start(*entry, true, true, 1);
+	
+	
+	int response = dialog.run();
+	std::string uri;
+	
+	if(response == Gtk::RESPONSE_OK)
+	{
+		uri = entry->get_text();
+	}
+	
+	return uri;
 }
 
 void MainWindow::checkAll()
@@ -135,12 +190,5 @@ void MainWindow::uncheckAll()
 
 void MainWindow::performChangeChecksState(bool state)
 {
-	//auto rowList = treeModel->children();
-	//if(rowList.size()>0)
-	//{
-	//	for(unsigned int i=0; i< rowList.size(); i++)
-	//	{
-	//		rowList[i][columns.doCheck] = state;
-	//	}
-	//}
+	
 }
