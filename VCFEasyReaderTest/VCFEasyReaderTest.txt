@@ -1,1 +1,1 @@
-./Release/CatchMain.cpp.o ./Release/MockWindow.cpp.o ./Release/TreeViewTest.cpp.o
+./Release/CatchMain.cpp.o ./Release/MockWindow.cpp.o ./Release/TreeViewTest.cpp.o ./Release/ParserTest.cpp.o

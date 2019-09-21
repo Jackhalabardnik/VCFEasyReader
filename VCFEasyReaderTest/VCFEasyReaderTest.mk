@@ -60,7 +60,7 @@ AS       := as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/CatchMain.cpp$(ObjectSuffix) $(IntermediateDirectory)/MockWindow.cpp$(ObjectSuffix) $(IntermediateDirectory)/TreeViewTest.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/CatchMain.cpp$(ObjectSuffix) $(IntermediateDirectory)/MockWindow.cpp$(ObjectSuffix) $(IntermediateDirectory)/TreeViewTest.cpp$(ObjectSuffix) $(IntermediateDirectory)/ParserTest.cpp$(ObjectSuffix) 
 
 
 
@@ -114,6 +114,14 @@ $(IntermediateDirectory)/TreeViewTest.cpp$(DependSuffix): TreeViewTest.cpp
 
 $(IntermediateDirectory)/TreeViewTest.cpp$(PreprocessSuffix): TreeViewTest.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/TreeViewTest.cpp$(PreprocessSuffix) TreeViewTest.cpp
+
+$(IntermediateDirectory)/ParserTest.cpp$(ObjectSuffix): ParserTest.cpp $(IntermediateDirectory)/ParserTest.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/jacek/CLP/VCFEasyReader/VCFEasyReaderTest/ParserTest.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/ParserTest.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/ParserTest.cpp$(DependSuffix): ParserTest.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/ParserTest.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/ParserTest.cpp$(DependSuffix) -MM ParserTest.cpp
+
+$(IntermediateDirectory)/ParserTest.cpp$(PreprocessSuffix): ParserTest.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/ParserTest.cpp$(PreprocessSuffix) ParserTest.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

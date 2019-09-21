@@ -112,10 +112,21 @@ void MainWindow::openNewFile()
 
 	auto filter_text = Gtk::FileFilter::create();
 	filter_text->set_name(".vcf files");
-	filter_text->add_mime_type("text/vcf");
+	filter_text->add_mime_type("text/plain");
 	dialog.add_filter(filter_text);
 	
 	int result = dialog.run();
+	
+	std::string uri;
+	
+	if(result == Gtk::ResponseType::RESPONSE_OK)
+	{
+		uri = dialog.get_uri();
+		uri.erase(uri.begin(),uri.begin()+7);
+	}
+	
+	auto vector = parser.parse(uri);
+	treeView.populate(vector);
 	
 }
 

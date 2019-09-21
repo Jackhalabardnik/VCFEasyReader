@@ -1,8 +1,9 @@
-#ifndef GTKMM_MAINWINDOW_H
-#define GTKMM_MAINWINDOW_H
+#pragma once
+
+#include "TreeView.h"
+#include "Parser.h"
 
 #include <gtkmm.h>
-#include "TreeView.h"
 #include <iostream>
 
 class MainWindow : public Gtk::ApplicationWindow
@@ -30,11 +31,10 @@ private:
 	std::string askUserForNewFileName();
 protected:
 	TreeView treeView;
+	Parser parser;
 
 	Gtk::Label pathLabel;
 	Gtk::ScrolledWindow scrolledWindow;
 	Gtk::Box outputBox, mainBox;
 	Gtk::Grid outputGrid;
 };
-
-#endif

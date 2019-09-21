@@ -60,7 +60,7 @@ AS       := as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/TreeView.cpp$(ObjectSuffix) $(IntermediateDirectory)/MainWindow.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/TreeView.cpp$(ObjectSuffix) $(IntermediateDirectory)/MainWindow.cpp$(ObjectSuffix) $(IntermediateDirectory)/Contact.cpp$(ObjectSuffix) $(IntermediateDirectory)/Parser.cpp$(ObjectSuffix) 
 
 
 
@@ -114,6 +114,22 @@ $(IntermediateDirectory)/MainWindow.cpp$(DependSuffix): MainWindow.cpp
 
 $(IntermediateDirectory)/MainWindow.cpp$(PreprocessSuffix): MainWindow.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/MainWindow.cpp$(PreprocessSuffix) MainWindow.cpp
+
+$(IntermediateDirectory)/Contact.cpp$(ObjectSuffix): Contact.cpp $(IntermediateDirectory)/Contact.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/jacek/CLP/VCFEasyReader/VCFEasyReader/Contact.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Contact.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Contact.cpp$(DependSuffix): Contact.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Contact.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Contact.cpp$(DependSuffix) -MM Contact.cpp
+
+$(IntermediateDirectory)/Contact.cpp$(PreprocessSuffix): Contact.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Contact.cpp$(PreprocessSuffix) Contact.cpp
+
+$(IntermediateDirectory)/Parser.cpp$(ObjectSuffix): Parser.cpp $(IntermediateDirectory)/Parser.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/jacek/CLP/VCFEasyReader/VCFEasyReader/Parser.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/Parser.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/Parser.cpp$(DependSuffix): Parser.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/Parser.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/Parser.cpp$(DependSuffix) -MM Parser.cpp
+
+$(IntermediateDirectory)/Parser.cpp$(PreprocessSuffix): Parser.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Parser.cpp$(PreprocessSuffix) Parser.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
