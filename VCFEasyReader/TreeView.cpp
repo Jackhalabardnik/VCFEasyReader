@@ -36,9 +36,9 @@ std::vector<Contact> TreeView::getChecked()
 {
 	std::vector<Contact> contactList;
 	
-	auto childern = treeModel->children();
+	auto children = treeModel->children();
 	
-	for(auto row : childern)
+	for(auto row : children)
 	{
 		if(row[columns.doCheck])
 		{
