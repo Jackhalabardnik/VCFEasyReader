@@ -112,10 +112,19 @@ void MainWindow::openNewFile()
 
 	auto filter_text = Gtk::FileFilter::create();
 	filter_text->set_name(".vcf files");
-	filter_text->add_mime_type("text/vcf");
+	filter_text->add_mime_type("text/plain");
 	dialog.add_filter(filter_text);
 	
 	int result = dialog.run();
+	
+	std::string uri;
+	
+	if(result == Gtk::ResponseType::RESPONSE_OK)
+	{
+		uri = dialog.get_uri();
+		uri.erase(uri.begin(),uri.begin()+7);
+		treeView.populate(parser.parse(uri));
+	}
 	
 }
 
@@ -137,19 +146,23 @@ void MainWindow::exportToTextFile()
 	
 	std::string uri;
 	
-	if(result == Gtk::ResponseType::RESPONSE_OK)
+	if(result == Gtk::ResponseType::RESPONSE_OK || result == 1)
 	{
-		uri = dialog.get_uri();
-		uri.erase(uri.begin(),uri.begin()+7);
-	}
-	else if(result == 1)
-	{
-		uri += dialog.get_current_folder_uri() + "/";
-		if(uri.size()>7)
+		if(result == Gtk::ResponseType::RESPONSE_OK)
 		{
+			uri = dialog.get_uri();
 			uri.erase(uri.begin(),uri.begin()+7);
 		}
-		uri += askUserForNewFileName();
+		else
+		{
+			uri = dialog.get_current_folder_uri() + "/";
+			if(uri.size()>7)
+			{
+				uri.erase(uri.begin(),uri.begin()+7);
+			}
+			uri += askUserForNewFileName();
+		}
+		exporter.exportToTextFile(treeView.getChecked(), uri);
 	}
 	else
 	{

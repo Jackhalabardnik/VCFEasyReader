@@ -1,1 +1,1 @@
-./Release/main.cpp.o ./Release/TreeView.cpp.o ./Release/MainWindow.cpp.o ./Release/Contact.cpp.o ./Release/Parser.cpp.o
+./Release/main.cpp.o ./Release/TreeView.cpp.o ./Release/MainWindow.cpp.o ./Release/Contact.cpp.o ./Release/Parser.cpp.o ./Release/Exporter.cpp.o

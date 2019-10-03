@@ -1,6 +1,8 @@
 #include <catch.hpp>
 #include "TreeView.cpp"
 
+auto have_to_be_here = Gtk::Application::create();
+
 class MockTreeView : public TreeView
 {
 	public:
@@ -11,8 +13,6 @@ class MockTreeView : public TreeView
 		children[0][columns.doCheck] = false;
 	}
 };
-
-auto have_to_be_here = Gtk::Application::create();
 
 bool match(std::vector<Contact> v1, std::vector<Contact> v2)
 {

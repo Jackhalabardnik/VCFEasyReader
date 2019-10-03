@@ -2,6 +2,7 @@
 
 #include "TreeView.h"
 #include "Parser.h"
+#include "Exporter.h"
 
 #include <gtkmm.h>
 #include <iostream>
@@ -32,6 +33,7 @@ private:
 protected:
 	TreeView treeView;
 	Parser parser;
+	Exporter exporter;
 
 	Gtk::Label pathLabel;
 	Gtk::ScrolledWindow scrolledWindow;

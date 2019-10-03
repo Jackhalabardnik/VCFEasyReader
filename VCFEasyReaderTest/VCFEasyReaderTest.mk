@@ -12,18 +12,8 @@ OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
-<<<<<<< HEAD
-<<<<<<< HEAD
-User                   :=jacek
-Date                   :=01/10/19
-=======
-User                   :=Jacek Wójcik
-Date                   :=30/09/19
->>>>>>> b7b4f2337794784c4b81599a8b1ef44c6d92239e
-=======
 User                   :=Jacek Wójcik
 Date                   :=03/10/19
->>>>>>> Export
 CodeLitePath           :=/home/jacek/.codelite
 LinkerName             :=g++
 SharedObjectLinkerName :=g++ -shared -fPIC
