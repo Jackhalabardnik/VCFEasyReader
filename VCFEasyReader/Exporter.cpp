@@ -1,5 +1,10 @@
 #include "Exporter.h"
 
+void Exporter::exportToTextFile(std::vector<Contact> contacts, std::string path)
+{
+	saveToFile(path, formatToText(contacts));
+}
+
 std::string Exporter::formatToText(std::vector<Contact> contacts)
 {
 	std::string result;
@@ -41,4 +46,12 @@ std::string Exporter::returnCharacters(std::string character, int times)
 	}
 	
 	return s;
+}
+
+void Exporter::saveToFile(std::string path, std::string text)
+{
+	std::fstream file;
+	file.open(path, std::fstream::out | std::fstream::trunc);
+	file << text;
+	file.close();
 }
