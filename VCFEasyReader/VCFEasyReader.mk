@@ -13,7 +13,11 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=jacek
+<<<<<<< HEAD
 Date                   :=26/09/19
+=======
+Date                   :=03/10/19
+>>>>>>> Sorting
 CodeLitePath           :=/home/jacek/.codelite
 LinkerName             :=/usr/bin/x86_64-linux-gnu-g++
 SharedObjectLinkerName :=/usr/bin/x86_64-linux-gnu-g++ -shared -fPIC
