@@ -11,10 +11,10 @@
     <File Name="MockWindow.hpp"/>
   </VirtualDirectory>
   <VirtualDirectory Name="src">
-    <File Name="CatchMain.cpp"/>
     <File Name="TreeViewTest.cpp"/>
     <File Name="ParserTest.cpp"/>
     <File Name="ExporterTest.cpp"/>
+    <File Name="CatchMain.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>
