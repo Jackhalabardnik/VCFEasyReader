@@ -12,9 +12,9 @@
   </VirtualDirectory>
   <VirtualDirectory Name="src">
     <File Name="CatchMain.cpp"/>
-    <File Name="MockWindow.cpp"/>
     <File Name="TreeViewTest.cpp"/>
     <File Name="ParserTest.cpp"/>
+    <File Name="ExporterTest.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>
