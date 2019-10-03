@@ -11,5 +11,9 @@ public:
 	std::string number;
 	int id;
 
+	bool operator==(const Contact & c);
+	
+	bool operator!=(const Contact & c);
+
 };
 

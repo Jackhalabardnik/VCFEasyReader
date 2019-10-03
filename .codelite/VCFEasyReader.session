@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Session Name="/home/jacek/CLP/VCFEasyReader/VCFEasyReader.workspace">
-  <int Value="2" Name="m_selectedTab"/>
+  <int Value="3" Name="m_selectedTab"/>
   <wxString Value="/home/jacek/CLP/VCFEasyReader/VCFEasyReader.workspace" Name="m_workspaceName"/>
   <TabInfoArray Name="TabInfoArray">
     <TabInfo>
+<<<<<<< HEAD
       <wxString Value="/home/jacek/CLP/VCFEasyReader/VCFEasyReader/MainWindow.cpp" Name="FileName"/>
       <int Value="177" Name="FirstVisibleLine"/>
       <int Value="188" Name="CurrentLine"/>
@@ -42,20 +43,43 @@
       <wxString Value="/home/jacek/CLP/VCFEasyReader/VCFEasyReader/Contact.h" Name="FileName"/>
       <int Value="0" Name="FirstVisibleLine"/>
       <int Value="0" Name="CurrentLine"/>
+=======
+      <wxString Value="/home/jacek/CLP/VCFEasyReader/VCFEasyReaderTest/ParserTest.cpp" Name="FileName"/>
+      <int Value="0" Name="FirstVisibleLine"/>
+      <int Value="4" Name="CurrentLine"/>
+>>>>>>> b7b4f2337794784c4b81599a8b1ef44c6d92239e
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
       <wxString Value="/home/jacek/CLP/VCFEasyReader/VCFEasyReader/Parser.h" Name="FileName"/>
+<<<<<<< HEAD
       <int Value="0" Name="FirstVisibleLine"/>
       <int Value="0" Name="CurrentLine"/>
+=======
+      <int Value="6" Name="FirstVisibleLine"/>
+      <int Value="4" Name="CurrentLine"/>
+>>>>>>> b7b4f2337794784c4b81599a8b1ef44c6d92239e
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>
     <TabInfo>
+<<<<<<< HEAD
       <wxString Value="/home/jacek/CLP/VCFEasyReader/VCFEasyReader/TreeView.h" Name="FileName"/>
       <int Value="0" Name="FirstVisibleLine"/>
       <int Value="0" Name="CurrentLine"/>
+=======
+      <wxString Value="/home/jacek/CLP/VCFEasyReader/VCFEasyReader/Parser.cpp" Name="FileName"/>
+      <int Value="17" Name="FirstVisibleLine"/>
+      <int Value="39" Name="CurrentLine"/>
+      <wxArrayString Name="Bookmarks"/>
+      <IntVector Name="CollapsedFolds"/>
+    </TabInfo>
+    <TabInfo>
+      <wxString Value="/home/jacek/CLP/VCFEasyReader/VCFEasyReader/TreeView.cpp" Name="FileName"/>
+      <int Value="2" Name="FirstVisibleLine"/>
+      <int Value="10" Name="CurrentLine"/>
+>>>>>>> b7b4f2337794784c4b81599a8b1ef44c6d92239e
       <wxArrayString Name="Bookmarks"/>
       <IntVector Name="CollapsedFolds"/>
     </TabInfo>

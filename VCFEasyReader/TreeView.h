@@ -15,8 +15,10 @@ public:
 	
 	void populate(std::vector<Contact> contacts);
 	
+	std::vector<Contact> getChecked();
 	
-private:
+	
+protected:
 	class ModelColumns : public Gtk::TreeModel::ColumnRecord
 	{
 		public:

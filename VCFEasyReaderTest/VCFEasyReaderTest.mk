@@ -12,8 +12,13 @@ OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
+<<<<<<< HEAD
 User                   :=jacek
 Date                   :=01/10/19
+=======
+User                   :=Jacek Wójcik
+Date                   :=30/09/19
+>>>>>>> b7b4f2337794784c4b81599a8b1ef44c6d92239e
 CodeLitePath           :=/home/jacek/.codelite
 LinkerName             :=/usr/bin/x86_64-linux-gnu-g++
 SharedObjectLinkerName :=/usr/bin/x86_64-linux-gnu-g++ -shared -fPIC
