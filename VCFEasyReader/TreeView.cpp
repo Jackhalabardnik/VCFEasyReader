@@ -29,8 +29,24 @@ void TreeView::populate(std::vector<Contact> contacts)
 		row[columns.contactName] = contact.name;
 		row[columns.contactNumber] = contact.number;
 		row[columns.contactId] = contact.id;
-		
-		to += "|||" + contact.name + "|||";
 	}
-	std::cout << to;
+}
+
+std::vector<Contact> TreeView::getChecked()
+{
+	std::vector<Contact> contactList;
+	
+	auto children = treeModel->children();
+	
+	for(auto row : children)
+	{
+		if(row[columns.doCheck])
+		{
+			Glib::ustring name = row[columns.contactName];
+			Glib::ustring number = row[columns.contactNumber];
+			contactList.emplace_back(Contact(name, number, 0));
+		}
+	}
+	
+	return contactList;
 }
