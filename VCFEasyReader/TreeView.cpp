@@ -30,7 +30,7 @@ void TreeView::populate(std::vector<Contact> contacts)
 {
 	Gtk::TreeModel::Row row; 
 	
-	std::string to;
+	treeModel->clear();
 	
 	for(Contact contact : contacts)
 	{

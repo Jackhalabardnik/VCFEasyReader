@@ -52,7 +52,17 @@ TEST_CASE("Return populated contacts without unchecked", "[TreeView]")
 	
 	view.uncheckFirstRow();
 	
-	std::vector<Contact> result = view.getChecked(); 
+	CHECK(match(checked,view.getChecked()));
+}
+
+TEST_CASE("Deletes previous contacts before populating", "[TreeView]")
+{
+	std::vector<Contact> first = {Contact("Jon", "123-123-123", 0), Contact("Mel", "567-345-345", 1) };
+	std::vector<Contact> result = {Contact("Mel", "567-345-345", 0), Contact("Cel", "123-345-345", 1), Contact("Nel", "568-345-345", 2) };
+	MockTreeView view;
 	
-	CHECK(match(checked,result));
+	view.populate(first);
+	view.populate(result);
+	
+	CHECK(match(view.getChecked(),result));
 }
