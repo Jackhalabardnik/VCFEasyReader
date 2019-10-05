@@ -50,3 +50,13 @@ TEST_CASE("Parsing contact with encoded name", "[ParserTest]")
 	
 	CHECK(vector[0].name == "Jonh Gorbe");
 }
+
+TEST_CASE("Parsing contact with carrige return on the end", "[ParserTest]")
+{
+	Parser parser;
+	std::string s = "/home/jacek/CLP/VCFEasyReader/VCFEasyReaderTest/smartphone.vcf";
+	
+	std::vector<Contact> vector = parser.parse(s);
+	
+	CHECK(vector[0].name == "AMa");
+}

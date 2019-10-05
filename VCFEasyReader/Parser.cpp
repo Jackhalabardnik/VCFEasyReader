@@ -10,9 +10,14 @@ std::vector<Contact> Parser::parse(std::string s)
 	std::vector<Contact> vector;
 	std::string name, number, line;
 	int id = 0;
-	file.open(s);
+	file.open(s, std::ios::in | std::ios::binary);
 	while(std::getline(file,line))
 	{
+		if(line.find("\r") != std::string::npos)
+		{
+			line.erase(line.end()-1,line.end());
+		}
+		
 		if(line.substr(0,3) == "FN:")
 		{
 			name = line.substr(3);
