@@ -1,7 +1,9 @@
-#ifndef TREEVIEW_H
-#define TREEVIEW_H
+#pragma once
+
+#include "Contact.h"
 
 #include <gtkmm-3.0/gtkmm.h>
+#include <vector>
 
 class TreeView
 {
@@ -11,8 +13,14 @@ public:
 	
 	Gtk::TreeView& returnWidget();
 	
+	void populate(std::vector<Contact> contacts);
 	
-private:
+	std::vector<Contact> getChecked();
+	
+	void setAllChecks(bool state);
+	
+	
+protected:
 	class ModelColumns : public Gtk::TreeModel::ColumnRecord
 	{
 		public:
@@ -22,13 +30,13 @@ private:
 			add(doCheck); 
 			add(contactName); 
 			add(contactNumber); 
-			add(contactInfo);
+			add(contactId);
 		}
 		
 		Gtk::TreeModelColumn<bool> doCheck;
 		Gtk::TreeModelColumn<Glib::ustring> contactName;
 		Gtk::TreeModelColumn<Glib::ustring> contactNumber;
-		Gtk::TreeModelColumn<Glib::ustring> contactInfo;
+		Gtk::TreeModelColumn<int> contactId;
 	};
   
 	ModelColumns columns;
@@ -36,5 +44,3 @@ private:
 	Glib::RefPtr<Gtk::ListStore> treeModel;
   
 };
-
-#endif

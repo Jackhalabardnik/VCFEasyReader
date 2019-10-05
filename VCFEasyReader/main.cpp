@@ -1,8 +1,8 @@
 #include "MainWindow.h"
 
-int main (int argc, char *argv[])
+int main ()
 {
-  Glib::RefPtr<Gtk::Application> app = Gtk::Application::create(argc, argv, "VCFEasyReader");
+  Glib::RefPtr<Gtk::Application> app = Gtk::Application::create();
 
   MainWindow mainwindow;
   

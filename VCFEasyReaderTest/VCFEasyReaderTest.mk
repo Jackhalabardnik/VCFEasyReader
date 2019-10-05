@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=Jacek Wójcik
-Date                   :=14/09/19
+Date                   :=05/10/19
 CodeLitePath           :=/home/jacek/.codelite
 LinkerName             :=g++
 SharedObjectLinkerName :=g++ -shared -fPIC
@@ -60,7 +60,7 @@ AS       := as
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/CatchMain.cpp$(ObjectSuffix) $(IntermediateDirectory)/MockWindow.cpp$(ObjectSuffix) $(IntermediateDirectory)/TreeViewTest.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/TreeViewTest.cpp$(ObjectSuffix) $(IntermediateDirectory)/ParserTest.cpp$(ObjectSuffix) $(IntermediateDirectory)/ExporterTest.cpp$(ObjectSuffix) $(IntermediateDirectory)/CatchMain.cpp$(ObjectSuffix) 
 
 
 
@@ -91,22 +91,6 @@ PreBuild:
 ##
 ## Objects
 ##
-$(IntermediateDirectory)/CatchMain.cpp$(ObjectSuffix): CatchMain.cpp $(IntermediateDirectory)/CatchMain.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/jacek/CLP/VCFEasyReader/VCFEasyReaderTest/CatchMain.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/CatchMain.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/CatchMain.cpp$(DependSuffix): CatchMain.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/CatchMain.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/CatchMain.cpp$(DependSuffix) -MM CatchMain.cpp
-
-$(IntermediateDirectory)/CatchMain.cpp$(PreprocessSuffix): CatchMain.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/CatchMain.cpp$(PreprocessSuffix) CatchMain.cpp
-
-$(IntermediateDirectory)/MockWindow.cpp$(ObjectSuffix): MockWindow.cpp $(IntermediateDirectory)/MockWindow.cpp$(DependSuffix)
-	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/jacek/CLP/VCFEasyReader/VCFEasyReaderTest/MockWindow.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/MockWindow.cpp$(ObjectSuffix) $(IncludePath)
-$(IntermediateDirectory)/MockWindow.cpp$(DependSuffix): MockWindow.cpp
-	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/MockWindow.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/MockWindow.cpp$(DependSuffix) -MM MockWindow.cpp
-
-$(IntermediateDirectory)/MockWindow.cpp$(PreprocessSuffix): MockWindow.cpp
-	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/MockWindow.cpp$(PreprocessSuffix) MockWindow.cpp
-
 $(IntermediateDirectory)/TreeViewTest.cpp$(ObjectSuffix): TreeViewTest.cpp $(IntermediateDirectory)/TreeViewTest.cpp$(DependSuffix)
 	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/jacek/CLP/VCFEasyReader/VCFEasyReaderTest/TreeViewTest.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/TreeViewTest.cpp$(ObjectSuffix) $(IncludePath)
 $(IntermediateDirectory)/TreeViewTest.cpp$(DependSuffix): TreeViewTest.cpp
@@ -114,6 +98,30 @@ $(IntermediateDirectory)/TreeViewTest.cpp$(DependSuffix): TreeViewTest.cpp
 
 $(IntermediateDirectory)/TreeViewTest.cpp$(PreprocessSuffix): TreeViewTest.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/TreeViewTest.cpp$(PreprocessSuffix) TreeViewTest.cpp
+
+$(IntermediateDirectory)/ParserTest.cpp$(ObjectSuffix): ParserTest.cpp $(IntermediateDirectory)/ParserTest.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/jacek/CLP/VCFEasyReader/VCFEasyReaderTest/ParserTest.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/ParserTest.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/ParserTest.cpp$(DependSuffix): ParserTest.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/ParserTest.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/ParserTest.cpp$(DependSuffix) -MM ParserTest.cpp
+
+$(IntermediateDirectory)/ParserTest.cpp$(PreprocessSuffix): ParserTest.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/ParserTest.cpp$(PreprocessSuffix) ParserTest.cpp
+
+$(IntermediateDirectory)/ExporterTest.cpp$(ObjectSuffix): ExporterTest.cpp $(IntermediateDirectory)/ExporterTest.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/jacek/CLP/VCFEasyReader/VCFEasyReaderTest/ExporterTest.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/ExporterTest.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/ExporterTest.cpp$(DependSuffix): ExporterTest.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/ExporterTest.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/ExporterTest.cpp$(DependSuffix) -MM ExporterTest.cpp
+
+$(IntermediateDirectory)/ExporterTest.cpp$(PreprocessSuffix): ExporterTest.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/ExporterTest.cpp$(PreprocessSuffix) ExporterTest.cpp
+
+$(IntermediateDirectory)/CatchMain.cpp$(ObjectSuffix): CatchMain.cpp $(IntermediateDirectory)/CatchMain.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/jacek/CLP/VCFEasyReader/VCFEasyReaderTest/CatchMain.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/CatchMain.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/CatchMain.cpp$(DependSuffix): CatchMain.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/CatchMain.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/CatchMain.cpp$(DependSuffix) -MM CatchMain.cpp
+
+$(IntermediateDirectory)/CatchMain.cpp$(PreprocessSuffix): CatchMain.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/CatchMain.cpp$(PreprocessSuffix) CatchMain.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)
