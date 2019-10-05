@@ -12,6 +12,20 @@ class MockTreeView : public TreeView
 
 		children[0][columns.doCheck] = false;
 	}
+	
+	bool hasEveryContactState(bool state)
+	{
+		auto children = treeModel->children();
+		
+		for(auto contact :children)
+		{
+			if(contact[columns.doCheck] != state)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
 };
 
 bool match(std::vector<Contact> v1, std::vector<Contact> v2)
@@ -65,4 +79,27 @@ TEST_CASE("Deletes previous contacts before populating", "[TreeView]")
 	view.populate(result);
 	
 	CHECK(match(view.getChecked(),result));
+}
+
+TEST_CASE("Sets every contact to check or uncheck state", "[TreeView]")
+{
+	std::vector<Contact> contacts = {Contact("Mel", "567-345-345", 0), Contact("Cel", "123-345-345", 1), Contact("Nel", "568-345-345", 2) };
+	MockTreeView view;
+	
+	view.populate(contacts);
+	
+	SECTION("First, they should be set to checked state")
+	{
+		CHECK(view.hasEveryContactState(true));
+	}
+	view.setAllChecks(false);
+	SECTION("After setting every one to uncheck state, they should be unchecked")
+	{
+		CHECK(view.hasEveryContactState(false));
+	}
+	view.setAllChecks(true);
+	SECTION("After setting every one to check state again, they should be checked")
+	{
+		CHECK(view.hasEveryContactState(true));
+	}
 }

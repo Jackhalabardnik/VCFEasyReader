@@ -160,7 +160,7 @@ void MainWindow::exportToTextFile()
 			{
 				uri.erase(uri.begin(),uri.begin()+7);
 			}
-			uri += askUserForNewFileName();
+			uri += askUserForNewFileName() + ".txt";
 		}
 		exporter.exportToTextFile(treeView.getChecked(), uri);
 	}
@@ -193,10 +193,10 @@ std::string MainWindow::askUserForNewFileName()
 
 void MainWindow::checkAll()
 {
-	
+	treeView.setAllChecks(true);
 }
 
 void MainWindow::uncheckAll()
 {
-	
+	treeView.setAllChecks(false);
 }

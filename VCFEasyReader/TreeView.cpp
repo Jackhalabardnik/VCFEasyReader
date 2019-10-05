@@ -60,3 +60,13 @@ std::vector<Contact> TreeView::getChecked()
 	
 	return contactList;
 }
+
+void TreeView::setAllChecks(bool state)
+{
+	auto children = treeModel->children();
+	
+	for(auto row : children)
+	{
+		row[columns.doCheck] = state;
+	}
+}

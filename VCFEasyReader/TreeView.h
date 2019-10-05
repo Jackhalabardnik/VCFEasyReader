@@ -17,6 +17,8 @@ public:
 	
 	std::vector<Contact> getChecked();
 	
+	void setAllChecks(bool state);
+	
 	
 protected:
 	class ModelColumns : public Gtk::TreeModel::ColumnRecord
