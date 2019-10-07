@@ -124,6 +124,7 @@ void MainWindow::openNewFile()
 		uri = dialog.get_uri();
 		uri.erase(uri.begin(),uri.begin()+7);
 		treeView.populate(parser.parse(uri));
+		pathLabel.set_text(uri);
 	}
 	
 }
