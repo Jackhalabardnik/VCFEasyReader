@@ -112,7 +112,7 @@ void MainWindow::openNewFile()
 
 	auto filter_text = Gtk::FileFilter::create();
 	filter_text->set_name(".vcf files");
-	filter_text->add_mime_type("text/plain");
+	filter_text->add_mime_type("text/vcard");
 	dialog.add_filter(filter_text);
 	
 	int result = dialog.run();
