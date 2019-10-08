@@ -15,6 +15,7 @@
     <File Name="ParserTest.cpp"/>
     <File Name="ExporterTest.cpp"/>
     <File Name="CatchMain.cpp"/>
+    <File Name="ContactTest.cpp"/>
   </VirtualDirectory>
   <Settings Type="Executable">
     <GlobalSettings>

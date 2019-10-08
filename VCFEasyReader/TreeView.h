@@ -30,13 +30,11 @@ protected:
 			add(doCheck); 
 			add(contactName); 
 			add(contactNumber); 
-			add(contactId);
 		}
 		
 		Gtk::TreeModelColumn<bool> doCheck;
 		Gtk::TreeModelColumn<Glib::ustring> contactName;
 		Gtk::TreeModelColumn<Glib::ustring> contactNumber;
-		Gtk::TreeModelColumn<int> contactId;
 	};
   
 	ModelColumns columns;

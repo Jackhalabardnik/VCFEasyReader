@@ -5,15 +5,20 @@
 class Contact
 {
 public:
-	Contact(std::string Name, std::string Number, int Id);
+	Contact(std::string Name, std::string Number);
 	
-	std::string name;
-	std::string number;
-	int id;
+	std::string getName();
+	std::string getNumber();
+
+	int getNameTrueSize();
 
 	bool operator==(const Contact & c);
 	
 	bool operator!=(const Contact & c);
+		
+private:
+	std::string name;
+	std::string number;
 
 };
 

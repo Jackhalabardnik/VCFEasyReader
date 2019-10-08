@@ -9,7 +9,6 @@ std::vector<Contact> Parser::parse(std::string s)
 	std::fstream file;
 	std::vector<Contact> vector;
 	std::string name, number, line;
-	int id = 0;
 	file.open(s, std::ios::in | std::ios::binary);
 	while(std::getline(file,line))
 	{
@@ -41,7 +40,7 @@ std::vector<Contact> Parser::parse(std::string s)
 		}
 		else if(line.substr(0,9) == "END:VCARD")
 		{
-			vector.emplace_back(Contact(name, number, id++));
+			vector.emplace_back(Contact(name, number));
 		}
 	}
 	

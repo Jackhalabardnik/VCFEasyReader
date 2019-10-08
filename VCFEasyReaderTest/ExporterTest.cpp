@@ -22,7 +22,7 @@ TEST_CASE("Exporter exports contacts to text file format","[ExporterTests]")
 	"John    321-321-321\n";
 	
 	
-	std::vector<Contact> contacts = {Contact("Mike", "123-123-123",0), Contact("John", "321-321-321", 1)};
+	std::vector<Contact> contacts = {Contact("Mike", "123-123-123"), Contact("John", "321-321-321")};
 	
 	MockExporter exporter;
 	
@@ -39,7 +39,7 @@ TEST_CASE("Exporter adjusts width of name column to longest name","[ExporterTest
 	"John                    321-321-321\n";
 	
 	
-	std::vector<Contact> contacts = {Contact("Mike_CourtYardStreet", "123-123-123",0), Contact("John", "321-321-321", 1)};
+	std::vector<Contact> contacts = {Contact("Mike_CourtYardStreet", "123-123-123"), Contact("John", "321-321-321")};
 	
 	MockExporter exporter;
 	
@@ -56,7 +56,7 @@ TEST_CASE("Exporter keep minimal width of name column","[ExporterTests]")
 	"She     321-321-321\n";
 	
 	
-	std::vector<Contact> contacts = {Contact("Me", "123-123-123",0), Contact("She", "321-321-321", 1)};
+	std::vector<Contact> contacts = {Contact("Me", "123-123-123"), Contact("She", "321-321-321")};
 	
 	MockExporter exporter;
 	

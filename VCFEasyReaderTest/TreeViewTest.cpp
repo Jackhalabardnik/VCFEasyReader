@@ -48,7 +48,7 @@ bool match(std::vector<Contact> v1, std::vector<Contact> v2)
 
 TEST_CASE("Return populated contacts", "[TreeView]")
 {
-	std::vector<Contact> v = {Contact("Jon", "123-123-123", 0), Contact("Mel", "567-345-345", 1) };
+	std::vector<Contact> v = {Contact("Jon", "123-123-123"), Contact("Mel", "567-345-345") };
 	MockTreeView view;
 	view.populate(v);
 	
@@ -59,8 +59,8 @@ TEST_CASE("Return populated contacts", "[TreeView]")
 
 TEST_CASE("Return populated contacts without unchecked", "[TreeView]")
 {
-	std::vector<Contact> v = {Contact("Jon", "123-123-123", 0), Contact("Mel", "567-345-345", 1) };
-	std::vector<Contact> checked = {Contact("Mel", "567-345-345", 1) };
+	std::vector<Contact> v = {Contact("Jon", "123-123-123"), Contact("Mel", "567-345-345") };
+	std::vector<Contact> checked = {Contact("Mel", "567-345-345") };
 	MockTreeView view;
 	view.populate(v);
 	
@@ -71,8 +71,8 @@ TEST_CASE("Return populated contacts without unchecked", "[TreeView]")
 
 TEST_CASE("Deletes previous contacts before populating", "[TreeView]")
 {
-	std::vector<Contact> first = {Contact("Jon", "123-123-123", 0), Contact("Mel", "567-345-345", 1) };
-	std::vector<Contact> result = {Contact("Mel", "567-345-345", 0), Contact("Cel", "123-345-345", 1), Contact("Nel", "568-345-345", 2) };
+	std::vector<Contact> first = {Contact("Jon", "123-123-123"), Contact("Mel", "567-345-345") };
+	std::vector<Contact> result = {Contact("Mel", "567-345-345"), Contact("Cel", "123-345-345"), Contact("Nel", "568-345-345") };
 	MockTreeView view;
 	
 	view.populate(first);
@@ -83,7 +83,7 @@ TEST_CASE("Deletes previous contacts before populating", "[TreeView]")
 
 TEST_CASE("Sets every contact to check or uncheck state", "[TreeView]")
 {
-	std::vector<Contact> contacts = {Contact("Mel", "567-345-345", 0), Contact("Cel", "123-345-345", 1), Contact("Nel", "568-345-345", 2) };
+	std::vector<Contact> contacts = {Contact("Mel", "567-345-345"), Contact("Cel", "123-345-345"), Contact("Nel", "568-345-345") };
 	MockTreeView view;
 	
 	view.populate(contacts);

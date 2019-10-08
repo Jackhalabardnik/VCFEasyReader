@@ -1,7 +1,6 @@
 #include <catch.hpp>
 
 #include "Parser.cpp"
-#include "Contact.cpp"
 
 TEST_CASE("Parsing 1 contact", "[ParserTest]")
 {
@@ -10,9 +9,8 @@ TEST_CASE("Parsing 1 contact", "[ParserTest]")
 	
 	std::vector<Contact> vector = parser.parse(s);
 	
-	CHECK(vector[0].name == "Test");
-	CHECK(vector[0].number == "333-222-111");
-	CHECK(vector[0].id == 0);
+	CHECK(vector[0].getName() == "Test");
+	CHECK(vector[0].getNumber() == "333-222-111");
 }
 
 TEST_CASE("Parsing multiple contacts", "[ParserTest]")
@@ -22,13 +20,11 @@ TEST_CASE("Parsing multiple contacts", "[ParserTest]")
 	
 	std::vector<Contact> vector = parser.parse(s);
 	
-	CHECK(vector[0].name == "Adam");
-	CHECK(vector[0].number == "000-000-000");
-	CHECK(vector[0].id == 0);
+	CHECK(vector[0].getName() == "Adam");
+	CHECK(vector[0].getNumber() == "000-000-000");
 	
-	CHECK(vector[1].name == "John Mick");
-	CHECK(vector[1].number == "111-000-111");
-	CHECK(vector[1].id == 1);
+	CHECK(vector[1].getName() == "John Mick");
+	CHECK(vector[1].getNumber() == "111-000-111");
 }
 
 TEST_CASE("Parsing contact with many things before number", "[ParserTest]")
@@ -38,7 +34,7 @@ TEST_CASE("Parsing contact with many things before number", "[ParserTest]")
 	
 	std::vector<Contact> vector = parser.parse(s);
 	
-	CHECK(vector[0].number == "333-222-111");
+	CHECK(vector[0].getNumber() == "333-222-111");
 }
 
 TEST_CASE("Parsing contact with encoded name", "[ParserTest]")
@@ -48,7 +44,7 @@ TEST_CASE("Parsing contact with encoded name", "[ParserTest]")
 	
 	std::vector<Contact> vector = parser.parse(s);
 	
-	CHECK(vector[0].name == "Jonh Gorbe");
+	CHECK(vector[0].getName() == "Jonh Gorbe");
 }
 
 TEST_CASE("Parsing contact with carrige return on the end", "[ParserTest]")
@@ -58,5 +54,5 @@ TEST_CASE("Parsing contact with carrige return on the end", "[ParserTest]")
 	
 	std::vector<Contact> vector = parser.parse(s);
 	
-	CHECK(vector[0].name == "AMa");
+	CHECK(vector[0].getName() == "AMa");
 }

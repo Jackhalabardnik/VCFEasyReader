@@ -12,15 +12,15 @@ OutDir                 := $(IntermediateDirectory)
 CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
-User                   :=jacek
-Date                   :=05/10/19
+User                   :=Jacek Wójcik
+Date                   :=08/10/19
 CodeLitePath           :=/home/jacek/.codelite
-LinkerName             :=/usr/bin/x86_64-linux-gnu-g++
-SharedObjectLinkerName :=/usr/bin/x86_64-linux-gnu-g++ -shared -fPIC
+LinkerName             :=g++
+SharedObjectLinkerName :=g++ -shared -fPIC
 ObjectSuffix           :=.o
 DependSuffix           :=.o.d
-PreprocessSuffix       :=.i
-DebugSwitch            :=-g 
+PreprocessSuffix       :=.o.i
+DebugSwitch            :=-gstab
 IncludeSwitch          :=-I
 LibrarySwitch          :=-l
 OutputSwitch           :=-o 
@@ -31,7 +31,7 @@ OutputFile             :=$(IntermediateDirectory)/$(ProjectName)
 Preprocessors          :=$(PreprocessorSwitch)NDEBUG 
 ObjectSwitch           :=-o 
 ArchiveOutputSwitch    := 
-PreprocessOnlySwitch   :=-E
+PreprocessOnlySwitch   :=-E 
 ObjectsFileList        :="VCFEasyReaderTest.txt"
 PCHCompileFlags        :=
 MakeDirCommand         :=mkdir -p
@@ -47,20 +47,20 @@ LibPath                := $(LibraryPathSwitch).
 ## Common variables
 ## AR, CXX, CC, AS, CXXFLAGS and CFLAGS can be overriden using an environment variables
 ##
-AR       := /usr/bin/x86_64-linux-gnu-ar rcu
-CXX      := /usr/bin/x86_64-linux-gnu-g++
-CC       := /usr/bin/x86_64-linux-gnu-gcc
+AR       := ar rcus
+CXX      := g++
+CC       := gcc
 CXXFLAGS :=  -O2 -std=c++14 -Wall $(shell pkg-config --cflags gtkmm-3.0) $(Preprocessors)
 CFLAGS   :=  -O2 -Wall $(Preprocessors)
 ASFLAGS  := 
-AS       := /usr/bin/x86_64-linux-gnu-as
+AS       := as
 
 
 ##
 ## User defined environment variables
 ##
 CodeLiteDir:=/usr/share/codelite
-Objects0=$(IntermediateDirectory)/TreeViewTest.cpp$(ObjectSuffix) $(IntermediateDirectory)/ParserTest.cpp$(ObjectSuffix) $(IntermediateDirectory)/ExporterTest.cpp$(ObjectSuffix) $(IntermediateDirectory)/CatchMain.cpp$(ObjectSuffix) 
+Objects0=$(IntermediateDirectory)/TreeViewTest.cpp$(ObjectSuffix) $(IntermediateDirectory)/ParserTest.cpp$(ObjectSuffix) $(IntermediateDirectory)/ExporterTest.cpp$(ObjectSuffix) $(IntermediateDirectory)/CatchMain.cpp$(ObjectSuffix) $(IntermediateDirectory)/ContactTest.cpp$(ObjectSuffix) 
 
 
 
@@ -122,6 +122,14 @@ $(IntermediateDirectory)/CatchMain.cpp$(DependSuffix): CatchMain.cpp
 
 $(IntermediateDirectory)/CatchMain.cpp$(PreprocessSuffix): CatchMain.cpp
 	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/CatchMain.cpp$(PreprocessSuffix) CatchMain.cpp
+
+$(IntermediateDirectory)/ContactTest.cpp$(ObjectSuffix): ContactTest.cpp $(IntermediateDirectory)/ContactTest.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "/home/jacek/CLP/VCFEasyReader/VCFEasyReaderTest/ContactTest.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/ContactTest.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/ContactTest.cpp$(DependSuffix): ContactTest.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/ContactTest.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/ContactTest.cpp$(DependSuffix) -MM ContactTest.cpp
+
+$(IntermediateDirectory)/ContactTest.cpp$(PreprocessSuffix): ContactTest.cpp
+	$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/ContactTest.cpp$(PreprocessSuffix) ContactTest.cpp
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

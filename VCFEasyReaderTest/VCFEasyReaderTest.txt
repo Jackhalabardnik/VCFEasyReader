@@ -1,1 +1,1 @@
-./Release/TreeViewTest.cpp.o ./Release/ParserTest.cpp.o ./Release/ExporterTest.cpp.o ./Release/CatchMain.cpp.o
+./Release/TreeViewTest.cpp.o ./Release/ParserTest.cpp.o ./Release/ExporterTest.cpp.o ./Release/CatchMain.cpp.o ./Release/ContactTest.cpp.o

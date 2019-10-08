@@ -15,7 +15,7 @@ std::string Exporter::formatToText(std::vector<Contact> contacts)
 	
 	for (Contact contact : contacts)
 	{
-		result += contact.name + returnCharacters(" ", longestNameSize - contact.name.size()) + minimalSpacing + contact.number + "\n";
+		result += contact.getName() + returnCharacters(" ", longestNameSize - contact.getName().size()) + minimalSpacing + contact.getNumber() + "\n";
 	}
 	
 	return result;
@@ -27,9 +27,9 @@ int Exporter::getLongestNameSize(std::vector<Contact> contacts)
 	
 	for(auto contact : contacts)
 	{
-		if(contact.name.size() > size)
+		if(contact.getName().size() > size)
 		{
-			size = contact.name.size();
+			size = contact.getName().size();
 		}
 	}
 	
