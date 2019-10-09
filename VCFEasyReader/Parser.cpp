@@ -4,13 +4,13 @@
 
 Parser::Parser() {}
 
-std::vector<Contact> Parser::parse(Glib::ustring s)
+std::vector<Contact> Parser::parse(Glib::ustring path)
 {
 	std::fstream file;
 	std::vector<Contact> vector;
 	std::string line;
 	Glib::ustring name, number;
-	file.open(s, std::ios::in | std::ios::binary);
+	file.open(path, std::ios::in | std::ios::binary);
 	while(std::getline(file,line))
 	{
 		if(line.find("\r") != std::string::npos)
@@ -48,13 +48,13 @@ std::vector<Contact> Parser::parse(Glib::ustring s)
 	return vector;
 }
 
-Glib::ustring Parser::decode(Glib::ustring s)
+Glib::ustring Parser::decode(Glib::ustring code)
 {
 	Glib::ustring result;
 	
-	for(unsigned int i=0, j=0 ; j<s.size()/3 ; i+=3, j++)
+	for(unsigned int i=0, j=0 ; j<code.size()/3 ; i+=3, j++)
 	{
-		result += char(sixToDec(s.substr(i+1,2)));
+		result += char(sixToDec(code.substr(i+1,2)));
 	}
 	
 	return result;

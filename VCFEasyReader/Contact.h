@@ -11,8 +11,6 @@ public:
 	
 	Glib::ustring getName();
 	Glib::ustring getNumber();
-
-	bool operator==(const Contact & c);
 	
 	bool operator!=(const Contact & c);
 		

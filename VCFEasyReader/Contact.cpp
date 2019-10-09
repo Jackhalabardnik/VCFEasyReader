@@ -4,14 +4,10 @@ Contact::Contact(Glib::ustring Name = "", Glib::ustring Number = "") : name(Name
 {
 }
 
-bool Contact::operator==(const Contact & c)
-{
-	return (name == c.name && number == c.number);
-}
 
 bool Contact::operator!=(const Contact & c)
 {
-	return !(*this == c);
+	return (name != c.name || number != c.number);
 }
 
 Glib::ustring Contact::getName()

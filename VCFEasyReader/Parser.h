@@ -15,8 +15,8 @@ public:
 	
 	std::vector<Contact> parse(Glib::ustring s);
 private:
-	Glib::ustring decode(Glib::ustring s);
-	int sixToDec(Glib::ustring s);
+	Glib::ustring decode(Glib::ustring path);
+	int sixToDec(Glib::ustring code);
 	int stringToInt(char s);
 };
 
