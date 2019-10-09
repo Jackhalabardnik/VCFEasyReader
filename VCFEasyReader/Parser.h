@@ -13,10 +13,10 @@ class Parser
 public:
 	Parser();
 	
-	std::vector<Contact> parse(std::string s);
+	std::vector<Contact> parse(Glib::ustring s);
 private:
-	std::string decode(std::string s);
-	int sixToDec(std::string s);
+	Glib::ustring decode(Glib::ustring s);
+	int sixToDec(Glib::ustring s);
 	int stringToInt(char s);
 };
 

@@ -1,5 +1,6 @@
 #include <catch.hpp>
 #include "TreeView.cpp"
+#include "Contact.cpp"
 
 auto have_to_be_here = Gtk::Application::create();
 

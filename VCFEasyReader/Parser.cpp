@@ -4,11 +4,12 @@
 
 Parser::Parser() {}
 
-std::vector<Contact> Parser::parse(std::string s)
+std::vector<Contact> Parser::parse(Glib::ustring s)
 {
 	std::fstream file;
 	std::vector<Contact> vector;
-	std::string name, number, line;
+	std::string line;
+	Glib::ustring name, number;
 	file.open(s, std::ios::in | std::ios::binary);
 	while(std::getline(file,line))
 	{
@@ -47,9 +48,9 @@ std::vector<Contact> Parser::parse(std::string s)
 	return vector;
 }
 
-std::string Parser::decode(std::string s)
+Glib::ustring Parser::decode(Glib::ustring s)
 {
-	std::string result;
+	Glib::ustring result;
 	
 	for(unsigned int i=0, j=0 ; j<s.size()/3 ; i+=3, j++)
 	{
@@ -59,7 +60,7 @@ std::string Parser::decode(std::string s)
 	return result;
 }
 
-int Parser::sixToDec(std::string s)
+int Parser::sixToDec(Glib::ustring s)
 {
 	return (16 * stringToInt(s[0])) + stringToInt(s[1]);
 } 

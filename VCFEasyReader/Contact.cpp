@@ -1,6 +1,6 @@
 #include "Contact.h"
 
-Contact::Contact(std::string Name = "", std::string Number = "") : name(Name), number(Number)
+Contact::Contact(Glib::ustring Name = "", Glib::ustring Number = "") : name(Name), number(Number)
 {
 }
 
@@ -14,17 +14,12 @@ bool Contact::operator!=(const Contact & c)
 	return !(*this == c);
 }
 
-std::string Contact::getName()
+Glib::ustring Contact::getName()
 {
 	return name;
 }
 
-std::string Contact::getNumber()
+Glib::ustring Contact::getNumber()
 {
 	return number;
-}
-
-int Contact::getNameTrueSize()
-{
-	return name.size();
 }
