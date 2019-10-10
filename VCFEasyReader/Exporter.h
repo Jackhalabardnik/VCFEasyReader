@@ -7,15 +7,15 @@ class Exporter
 {
 private:
 	int getLongestNameSize(std::vector<Contact> contacts);
-	std::string returnCharacters(std::string character, int times);
-	void saveToFile(std::string path, std::string text);
+	Glib::ustring returnCharacters(Glib::ustring character, int times);
+	void saveToFile(Glib::ustring path, Glib::ustring text);
 	
 	const int minimalSize = 4;
-	const std::string minimalSpacing = "    ";
+	const Glib::ustring minimalSpacing = "    ";
 	
 protected:
-	std::string formatToText(std::vector<Contact> contacts);
+	Glib::ustring formatToText(std::vector<Contact> contacts);
 	
 public:
-	void exportToTextFile(std::vector<Contact> contacts, std::string path);
+	void exportToTextFile(std::vector<Contact> contacts, Glib::ustring path);
 };

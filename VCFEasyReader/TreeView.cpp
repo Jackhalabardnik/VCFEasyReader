@@ -36,9 +36,8 @@ void TreeView::populate(std::vector<Contact> contacts)
 	{
 		row = *(treeModel->append()); 
 		row[columns.doCheck] = true;
-		row[columns.contactName] = contact.name;
-		row[columns.contactNumber] = contact.number;
-		row[columns.contactId] = contact.id;
+		row[columns.contactName] = contact.getName();
+		row[columns.contactNumber] = contact.getNumber();
 	}
 }
 
@@ -54,7 +53,7 @@ std::vector<Contact> TreeView::getChecked()
 		{
 			Glib::ustring name = row[columns.contactName];
 			Glib::ustring number = row[columns.contactNumber];
-			contactList.emplace_back(Contact(name, number, 0));
+			contactList.emplace_back(Contact(name, number));
 		}
 	}
 	

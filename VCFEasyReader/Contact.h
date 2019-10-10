@@ -1,19 +1,22 @@
 #pragma once
 
+#include <gtkmm-3.0/gtkmm.h>
+
 #include <iostream>
 
 class Contact
 {
 public:
-	Contact(std::string Name, std::string Number, int Id);
+	Contact(Glib::ustring Name, Glib::ustring Number);
 	
-	std::string name;
-	std::string number;
-	int id;
-
-	bool operator==(const Contact & c);
+	Glib::ustring getName();
+	Glib::ustring getNumber();
 	
 	bool operator!=(const Contact & c);
+		
+private:
+	Glib::ustring name;
+	Glib::ustring number;
 
 };
 

@@ -4,15 +4,20 @@
 
 Parser::Parser() {}
 
-std::vector<Contact> Parser::parse(std::string s)
+std::vector<Contact> Parser::parse(Glib::ustring path)
 {
 	std::fstream file;
 	std::vector<Contact> vector;
-	std::string name, number, line;
-	int id = 0;
-	file.open(s);
+	std::string line;
+	Glib::ustring name, number;
+	file.open(path, std::ios::in | std::ios::binary);
 	while(std::getline(file,line))
 	{
+		if(line.find("\r") != std::string::npos)
+		{
+			line.erase(line.end()-1,line.end());
+		}
+		
 		if(line.substr(0,3) == "FN:")
 		{
 			name = line.substr(3);
@@ -36,26 +41,26 @@ std::vector<Contact> Parser::parse(std::string s)
 		}
 		else if(line.substr(0,9) == "END:VCARD")
 		{
-			vector.emplace_back(Contact(name, number, id++));
+			vector.emplace_back(Contact(name, number));
 		}
 	}
 	
 	return vector;
 }
 
-std::string Parser::decode(std::string s)
+Glib::ustring Parser::decode(Glib::ustring code)
 {
-	std::string result;
+	Glib::ustring result;
 	
-	for(unsigned int i=0, j=0 ; j<s.size()/3 ; i+=3, j++)
+	for(unsigned int i=0, j=0 ; j<code.size()/3 ; i+=3, j++)
 	{
-		result += char(sixToDec(s.substr(i+1,2)));
+		result += char(sixToDec(code.substr(i+1,2)));
 	}
 	
 	return result;
 }
 
-int Parser::sixToDec(std::string s)
+int Parser::sixToDec(Glib::ustring s)
 {
 	return (16 * stringToInt(s[0])) + stringToInt(s[1]);
 } 

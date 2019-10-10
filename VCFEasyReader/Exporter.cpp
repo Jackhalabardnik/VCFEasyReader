@@ -1,13 +1,13 @@
 #include "Exporter.h"
 
-void Exporter::exportToTextFile(std::vector<Contact> contacts, std::string path)
+void Exporter::exportToTextFile(std::vector<Contact> contacts, Glib::ustring path)
 {
 	saveToFile(path, formatToText(contacts));
 }
 
-std::string Exporter::formatToText(std::vector<Contact> contacts)
+Glib::ustring Exporter::formatToText(std::vector<Contact> contacts)
 {
-	std::string result;
+	Glib::ustring result;
 	
 	int longestNameSize = getLongestNameSize(contacts);
 	
@@ -15,7 +15,7 @@ std::string Exporter::formatToText(std::vector<Contact> contacts)
 	
 	for (Contact contact : contacts)
 	{
-		result += contact.name + returnCharacters(" ", longestNameSize - contact.name.size()) + minimalSpacing + contact.number + "\n";
+		result += contact.getName() + returnCharacters(" ", longestNameSize - contact.getName().size()) + minimalSpacing + contact.getNumber() + "\n";
 	}
 	
 	return result;
@@ -27,18 +27,18 @@ int Exporter::getLongestNameSize(std::vector<Contact> contacts)
 	
 	for(auto contact : contacts)
 	{
-		if(contact.name.size() > size)
+		if(contact.getName().size() > size)
 		{
-			size = contact.name.size();
+			size = contact.getName().size();
 		}
 	}
 	
 	return size;
 }
 
-std::string Exporter::returnCharacters(std::string character, int times)
+Glib::ustring Exporter::returnCharacters(Glib::ustring character, int times)
 {
-	std::string s;
+	Glib::ustring s;
 	
 	for(int i=0;i<times;i++)
 	{
@@ -48,7 +48,7 @@ std::string Exporter::returnCharacters(std::string character, int times)
 	return s;
 }
 
-void Exporter::saveToFile(std::string path, std::string text)
+void Exporter::saveToFile(Glib::ustring path, Glib::ustring text)
 {
 	std::fstream file;
 	file.open(path, std::fstream::out | std::fstream::trunc);
