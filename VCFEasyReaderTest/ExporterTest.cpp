@@ -1,6 +1,6 @@
 #include <catch.hpp>
 
-#include "Exporter.cpp"
+#include "../VCFEasyReader/Exporter.cpp"
 
 class MockExporter : public Exporter
 {

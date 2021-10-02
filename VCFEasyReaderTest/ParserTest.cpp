@@ -1,11 +1,11 @@
 #include <catch.hpp>
 
-#include "Parser.cpp"
+#include "../VCFEasyReader/Parser.cpp"
 
 TEST_CASE("Parsing 1 contact", "[ParserTest]")
 {
 	Parser parser;
-	std::string s = "/home/jacek/CLP/VCFEasyReader/VCFEasyReaderTest/test1.vcf";
+	std::string s = "../test1.vcf";
 	
 	std::vector<Contact> vector = parser.parse(s);
 	
@@ -16,7 +16,7 @@ TEST_CASE("Parsing 1 contact", "[ParserTest]")
 TEST_CASE("Parsing multiple contacts", "[ParserTest]")
 {
 	Parser parser;
-	std::string s = "/home/jacek/CLP/VCFEasyReader/VCFEasyReaderTest/test_multiple.vcf";
+	std::string s = "../test_multiple.vcf";
 	
 	std::vector<Contact> vector = parser.parse(s);
 	
@@ -30,7 +30,7 @@ TEST_CASE("Parsing multiple contacts", "[ParserTest]")
 TEST_CASE("Parsing contact with many things before number", "[ParserTest]")
 {
 	Parser parser;
-	std::string s = "/home/jacek/CLP/VCFEasyReader/VCFEasyReaderTest/test_long_prenumber.vcf";
+	std::string s = "../test_long_prenumber.vcf";
 	
 	std::vector<Contact> vector = parser.parse(s);
 	
@@ -40,7 +40,7 @@ TEST_CASE("Parsing contact with many things before number", "[ParserTest]")
 TEST_CASE("Parsing contact with encoded name", "[ParserTest]")
 {
 	Parser parser;
-	std::string s = "/home/jacek/CLP/VCFEasyReader/VCFEasyReaderTest/test_encoded.vcf";
+	std::string s = "../test_encoded.vcf";
 	
 	std::vector<Contact> vector = parser.parse(s);
 	
@@ -50,7 +50,7 @@ TEST_CASE("Parsing contact with encoded name", "[ParserTest]")
 TEST_CASE("Parsing contact with carrige return on the end", "[ParserTest]")
 {
 	Parser parser;
-	std::string s = "/home/jacek/CLP/VCFEasyReader/VCFEasyReaderTest/smartphone.vcf";
+	std::string s = "../smartphone.vcf";
 	
 	std::vector<Contact> vector = parser.parse(s);
 	

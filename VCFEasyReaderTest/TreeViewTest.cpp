@@ -1,6 +1,6 @@
 #include <catch.hpp>
-#include "TreeView.cpp"
-#include "Contact.cpp"
+#include "../VCFEasyReader/TreeView.cpp"
+#include "../VCFEasyReader/Contact.cpp"
 
 auto have_to_be_here = Gtk::Application::create();
 

@@ -1,7 +1,7 @@
 #pragma once
 
-#include "MainWindow.cpp"
-#include "TreeView.h"
+#include "../VCFEasyReader/MainWindow.cpp"
+#include "../VCFEasyReader/TreeView.h"
 
 class MockWindow : public MainWindow
 {
