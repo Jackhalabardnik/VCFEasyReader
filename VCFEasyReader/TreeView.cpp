@@ -10,7 +10,12 @@ TreeView::TreeView()
 	treeView.append_column("Name", columns.contactName);
 	treeView.append_column("Call number", columns.contactNumber);
 	
-	auto column = treeView.get_column(1);
+	auto column = treeView.get_column(0);
+	if(column) {
+		column->set_sort_column(columns.doCheck);
+	}
+	
+	column = treeView.get_column(1);
 	if(column) {
 		column->set_sort_column(columns.contactName);
 	}
@@ -19,6 +24,7 @@ TreeView::TreeView()
 	if(column) {
 		column->set_sort_column(columns.contactNumber);
 	}
+	
 }
 
 Gtk::TreeView& TreeView::returnWidget()

@@ -32,7 +32,7 @@ void MainWindow::setMainGrid()
 void MainWindow::setWindow()
 {
 	set_title("VCF Easy reader");
-	set_size_request(300,-1);
+	set_size_request(400,300);
 }
 void MainWindow::showAll()
 {
